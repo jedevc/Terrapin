@@ -30,7 +30,7 @@ window.onload = () => {
     } catch (e) {
       err = e
     } finally {
-      let errors = document.getElementById('errors')
+      let errors = document.getElementById('errorView')
       if (err) {
         errors.classList.remove('success')
         errors.classList.add('error')
@@ -43,7 +43,7 @@ window.onload = () => {
     }
   }
 
-  let editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
+  let editor = CodeMirror.fromTextArea(document.getElementById('codeEditor'), {
     mode: 'javascript',
     theme: 'monokai',
     lineNumbers: true,
@@ -59,18 +59,18 @@ window.onload = () => {
     }, 200)
   }))
 
-  document.getElementById('lesson').innerHTML = lessons[currentLesson].name
+  document.getElementById('lessonName').innerHTML = lessons[currentLesson].name
   editor.setValue(lessons[currentLesson].code)
 
-  document.getElementById('nextLesson').addEventListener('click', () => {
+  document.getElementById('lessonChangeButton').addEventListener('click', () => {
     currentLesson++
     if (currentLesson < lessons.length) {
-      document.getElementById('lesson').innerHTML = lessons[currentLesson].name
+      document.getElementById('lessonName').innerHTML = lessons[currentLesson].name
       editor.setValue(lessons[currentLesson].code)
     }
   })
 
-  let canvas = document.getElementById('canvas')
+  let canvas = document.getElementById('canvasView')
   canvas.addEventListener('click', () => {
     exec()
   })

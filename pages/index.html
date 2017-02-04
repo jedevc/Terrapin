@@ -9,21 +9,23 @@
   </head>
   <body>
     <div class="header">
-      <h1 id="title">Turtle</h1>
-      <div>
-        <h2 id="lesson"></h2>
-        <a id="nextLesson">(next)</a>
+      <h1 class="title">Turtle</h1>
+      <div class="lesson">
+        <h2 id="lessonName"></h2>
+        <a id="lessonChangeButton">(next)</a>
       </div>
     </div>
     <div class="main">
-      <textarea id="editor"></textarea>
+      <div class="editor">
+        <textarea id="codeEditor"></textarea>
+      </div>
       <div class="view">
-        <canvas id="canvas" width="400" height="400"></canvas>
-        <pre id="errors" class="success"></pre>
+        <canvas id="canvasView" width="400" height="400"></canvas>
+        <pre id="errorView"></pre>
       </div>
     </div>
     <div class="footer">
-      <span class="author">Created by Justin Chadwell</span>
+      Created by Justin Chadwell
     </div>
   </body>
 </html>

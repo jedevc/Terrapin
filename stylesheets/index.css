@@ -35,24 +35,22 @@ body {
 
   & * {
     display: inline;
+  }
+
+  & .title {
+    flex: 1 1 auto;
+    text-align: left;
+    color: $monokai-red;
+  }
+
+  & .lesson {
+    flex: 1 1 auto;
+    text-align: right;
+    color: $monokai-green;
 
     a:hover {
       text-decoration: underline;
       cursor: pointer;
-    }
-  }
-
-  & > * {
-    &:first-child {
-      flex: 1 1 auto;
-      text-align: left;
-      color: $monokai-red;
-    }
-
-    &:last-child {
-      flex: 1 1 auto;
-      text-align: right;
-      color: $monokai-green;
     }
   }
 }
@@ -65,32 +63,35 @@ body {
   display: flex;
   flex-direction: row;
 
-  & .CodeMirror {
-    border: 2px solid $monokai-black-highlight;
-
-    height: 100%;
+  & .editor {
     flex: 1 1 auto;
 
-    margin-right: 20px;
-  }
+    & .CodeMirror {
+      border: 2px solid $monokai-black-highlight;
 
-  & .CodeMirror-gutters {
-    padding-right: 1em;
-    border-right: 2px solid $monokai-black-highlight;
+      height: 100%;
+
+      margin-right: 20px;
+    }
+
+    & .CodeMirror-gutters {
+      padding-right: 1em;
+      border-right: 2px solid $monokai-black-highlight;
+    }
   }
 
   & .view {
     display: flex;
     flex-direction: column;
 
-    & canvas {
+    & #canvasView {
       align-self: flex-start;
 
       background-color: #FFFFFF;
       border: 2px $monokai-black-highlight solid;
     }
 
-    & pre {
+    & #errorView {
       flex: 1 1 auto;
       padding: 1em;
       margin-bottom: 0;
