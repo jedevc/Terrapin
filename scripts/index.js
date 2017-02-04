@@ -5,6 +5,8 @@ import 'codemirror/theme/monokai.css'
 
 import Turtle from './turtle'
 
+import lessons from './lessons'
+
 window.randomNumber = function(lower, upper) {
   return lower + Math.floor(Math.random() * (upper - lower))
 }
@@ -15,14 +17,7 @@ window.randomColor = function(saturation = 70, lightness = 60) {
 
 window.turtle = null
 
-let sample = `
-turtle.background('black')
-turtle.penSize(5)
-for (let i = 0; i < 60; i++) {
-  turtle.color(randomColor())
-  turtle.forward(i)
-  turtle.turn(20)
-}`.trim()
+let currentLesson = 0
 
 window.onload = () => {
   let exec = () => {
@@ -55,7 +50,6 @@ window.onload = () => {
     lineWrapping: true,
     scrollbarStyle: null
   })
-  editor.setValue(sample)
 
   let timeout = null
   editor.on('change', (() => {
@@ -65,6 +59,17 @@ window.onload = () => {
     }, 200)
   }))
 
+  document.getElementById('lesson').innerHTML = lessons[currentLesson].name
+  editor.setValue(lessons[currentLesson].code)
+
+  document.getElementById('nextLesson').addEventListener('click', () => {
+    currentLesson++
+    if (currentLesson < lessons.length) {
+      document.getElementById('lesson').innerHTML = lessons[currentLesson].name
+      editor.setValue(lessons[currentLesson].code)
+    }
+  })
+
   let canvas = document.getElementById('canvas')
   canvas.addEventListener('click', () => {
     exec()
@@ -72,6 +77,4 @@ window.onload = () => {
 
   let ctx = canvas.getContext('2d')
   turtle = new Turtle(canvas, ctx)
-
-  exec()
 }

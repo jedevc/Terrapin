@@ -29,10 +29,31 @@ body {
   margin-bottom: 5px;
   z-index: 1;
 
-  color: $monokai-red;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
   & * {
     display: inline;
+
+    a:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  & > * {
+    &:first-child {
+      flex: 1 1 auto;
+      text-align: left;
+      color: $monokai-red;
+    }
+
+    &:last-child {
+      flex: 1 1 auto;
+      text-align: right;
+      color: $monokai-green;
+    }
   }
 }
 
