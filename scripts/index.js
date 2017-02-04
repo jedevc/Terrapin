@@ -26,9 +26,26 @@ for (let i = 0; i < 60; i++) {
 
 window.onload = () => {
   let exec = () => {
-    turtle.reset()
     let code = editor.getValue()
-    window.eval(code)
+    turtle.reset()
+
+    let err = null
+    try {
+      window.eval(code)
+    } catch (e) {
+      err = e
+    } finally {
+      let errors = document.getElementById('errors')
+      if (err) {
+        errors.classList.remove('success')
+        errors.classList.add('error')
+        errors.innerHTML = err
+      } else {
+        errors.classList.remove('error')
+        errors.classList.add('success')
+        errors.innerHTML = 'No errors!'
+      }
+    }
   }
 
   let editor = CodeMirror.fromTextArea(document.getElementById('editor'), {

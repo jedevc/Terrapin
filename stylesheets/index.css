@@ -58,11 +58,32 @@ body {
     border-right: 2px solid $monokai-black-highlight;
   }
 
-  & canvas {
-    align-self: flex-start;
+  & .view {
+    display: flex;
+    flex-direction: column;
 
-    background-color: #FFFFFF;
-    border: 2px $monokai-black-highlight solid;
+    & canvas {
+      align-self: flex-start;
+
+      background-color: #FFFFFF;
+      border: 2px $monokai-black-highlight solid;
+    }
+
+    & pre {
+      flex: 1 1 auto;
+      padding: 1em;
+      margin-bottom: 0;
+
+      &.success {
+        background-color: #94e562;
+        border: 2px solid #55bc14;
+      }
+
+      &.error {
+        background-color: #F28B7B;
+        border: 2px solid #F23518;
+      }
+    }
   }
 }
 
