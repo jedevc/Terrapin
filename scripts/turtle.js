@@ -1,9 +1,9 @@
-function toRadians(degrees) {
+function toRadians (degrees) {
   return degrees * (Math.PI / 180)
 }
 
 export default class Turtle {
-  constructor(canvas, ctx) {
+  constructor (canvas, ctx) {
     this.canvas = canvas
     this.ctx = ctx
 
@@ -18,7 +18,7 @@ export default class Turtle {
     this.reset(false)
   }
 
-  reset(clear = true) {
+  reset (clear = true) {
     this.center()
     this.angle = -90
     this.penIsDown = true
@@ -27,7 +27,7 @@ export default class Turtle {
     }
   }
 
-  _goto(x, y) {
+  _goto (x, y) {
     if (this.penIsDown) {
       this.ctx.lineTo(x, y)
       this.ctx.stroke()
@@ -39,7 +39,7 @@ export default class Turtle {
     this.y = y
   }
 
-  goto(x, y) {
+  goto (x, y) {
     if (this.penIsDown) {
       this.ctx.beginPath()
       this.ctx.moveTo(this.x, this.y)
@@ -54,33 +54,33 @@ export default class Turtle {
     this.y = y
   }
 
-  center() {
+  center () {
     this.x = this.canvas.width / 2
     this.y = this.canvas.height / 2
     this.ctx.moveTo(this.x, this.y)
   }
 
-  _forward(amount) {
+  _forward (amount) {
     let dx = amount * Math.cos(toRadians(this.angle))
     let dy = amount * Math.sin(toRadians(this.angle))
     this._goto(this.x + dx, this.y + dy)
   }
 
-  forward(amount) {
+  forward (amount) {
     let dx = amount * Math.cos(toRadians(this.angle))
     let dy = amount * Math.sin(toRadians(this.angle))
     this.goto(this.x + dx, this.y + dy)
   }
 
-  _backward(amount) {
+  _backward (amount) {
     this._forward(-amount)
   }
 
-  backward(amount) {
+  backward (amount) {
     this.forward(-amount)
   }
 
-  triangle(size, fill = false) {
+  triangle (size, fill = false) {
     if (this.penIsDown) {
       this.ctx.beginPath()
       this.ctx.moveTo(this.x, this.y)
@@ -102,7 +102,7 @@ export default class Turtle {
     }
   }
 
-  circle(radius, fill = false) {
+  circle (radius, fill = false) {
     if (this.penIsDown) {
       this.ctx.beginPath()
       this.ctx.arc(this.x, this.y, radius, 0, 2 * Math.PI)
@@ -115,46 +115,46 @@ export default class Turtle {
     }
   }
 
-  face(angle) {
+  face (angle) {
     this.angle = angle
   }
 
-  turn(angle) {
+  turn (angle) {
     this.angle += angle
   }
 
-  background(color) {
+  background (color) {
     let old = this.ctx.fillStyle
     this.ctx.fillStyle = color
     this.ctx.fillRect(0, 0, this.width, this.height)
     this.ctx.fillStyle = old
   }
 
-  penToggle() {
+  penToggle () {
     this.penIsDown = !this.penIsDown
   }
 
-  penUp() {
+  penUp () {
     this.penIsDown = false
   }
 
-  penDown() {
+  penDown () {
     this.penIsDown = true
   }
 
-  penSize(size) {
+  penSize (size) {
     this.ctx.lineWidth = size
   }
 
-  penColor(color) {
+  penColor (color) {
     this.ctx.strokeStyle = color
   }
 
-  fillColor(color) {
+  fillColor (color) {
     this.ctx.fillStyle = color
   }
 
-  color(color) {
+  color (color) {
     this.ctx.strokeStyle = color
     this.ctx.fillStyle = color
   }

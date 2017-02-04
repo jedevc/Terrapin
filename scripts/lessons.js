@@ -1,10 +1,10 @@
 const lesson1 = {
-  name: "First steps",
-  code: "turtle.forward(100)"
+  name: 'First steps',
+  code: 'turtle.forward(100)'
 }
 
 const lesson2 = {
-  name: "Turning the tide",
+  name: 'Turning the tide',
   code: `
 turtle.forward(100)
 turtle.turn(90)

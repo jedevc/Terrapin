@@ -7,12 +7,12 @@ import Turtle from './turtle'
 
 import lessons from './lessons'
 
-window.randomNumber = function(lower, upper) {
+window.randomNumber = function (lower, upper) {
   return lower + Math.floor(Math.random() * (upper - lower))
 }
 
-window.randomColor = function(saturation = 70, lightness = 60) {
-  return `hsl(${randomNumber(0, 360)}, ${saturation}%, ${lightness}%)`
+window.randomColor = function (saturation = 70, lightness = 60) {
+  return `hsl(${window.randomNumber(0, 360)}, ${saturation}%, ${lightness}%)`
 }
 
 window.turtle = null
@@ -22,11 +22,11 @@ let currentLesson = 0
 window.onload = () => {
   let exec = () => {
     let code = editor.getValue()
-    turtle.reset()
+    window.turtle.reset()
 
     let err = null
     try {
-      window.eval(code)
+      window.eval(code)  // eslint-disable-line no-eval
     } catch (e) {
       err = e
     } finally {
@@ -52,12 +52,12 @@ window.onload = () => {
   })
 
   let timeout = null
-  editor.on('change', (() => {
+  editor.on('change', () => {
     clearTimeout(timeout)
     timeout = setTimeout(() => {
       exec()
     }, 200)
-  }))
+  })
 
   document.getElementById('lessonName').innerHTML = lessons[currentLesson].name
   editor.setValue(lessons[currentLesson].code)
@@ -76,5 +76,5 @@ window.onload = () => {
   })
 
   let ctx = canvas.getContext('2d')
-  turtle = new Turtle(canvas, ctx)
+  window.turtle = new Turtle(canvas, ctx)
 }

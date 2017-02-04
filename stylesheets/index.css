@@ -1,22 +1,18 @@
 $monokai-black: #272822;
-$monokai-black-highlight: #49483E;
-$monokai-red: #F92672;
-$monokai-blue: #66D9EF;
-$monokai-green: #A6E22E;
-$monokai-orange: #FD971F;
+$monokai-black-highlight: #49483e;
+$monokai-red: #f92672;
+$monokai-blue: #66d9ef;
+$monokai-green: #a6e22e;
+$monokai-orange: #fd971f;
 
 body {
-  background-color: $monokai-black;
-
   margin: 0;
   padding: 0;
-
   height: 100vh;
-
-  font-size: 14px;
-
   display: flex;
   flex-direction: column;
+  font-size: 14px;
+  background-color: $monokai-black;
 
   & > * {
     padding: 1em;
@@ -24,14 +20,13 @@ body {
 }
 
 .header {
-  background-color: color($monokai-black lightness(-5%));
-  box-shadow: 0px 10px 15px 0px color($monokai-black lightness(-12%));
   margin-bottom: 5px;
-  z-index: 1;
-
   display: flex;
   flex-direction: row;
   align-items: center;
+  background-color: color($monokai-black lightness(-5%));
+  box-shadow: 0 10px 15px 0 color($monokai-black lightness(-12%));
+  z-index: 1;
 
   & * {
     display: inline;
@@ -56,10 +51,8 @@ body {
 }
 
 .main {
-  flex: 1 1 auto;
-
   height: 100%;
-
+  flex: 1 1 auto;
   display: flex;
   flex-direction: row;
 
@@ -67,11 +60,9 @@ body {
     flex: 1 1 auto;
 
     & .CodeMirror {
-      border: 2px solid $monokai-black-highlight;
-
       height: 100%;
-
       margin-right: 20px;
+      border: 2px solid $monokai-black-highlight;
     }
 
     & .CodeMirror-gutters {
@@ -86,9 +77,8 @@ body {
 
     & #canvasView {
       align-self: flex-start;
-
-      background-color: #FFFFFF;
       border: 2px $monokai-black-highlight solid;
+      background-color: #fff;
     }
 
     & #errorView {
@@ -97,23 +87,22 @@ body {
       margin-bottom: 0;
 
       &.success {
-        background-color: #94e562;
         border: 2px solid #55bc14;
+        background-color: #94e562;
       }
 
       &.error {
-        background-color: #F28B7B;
-        border: 2px solid #F23518;
+        border: 2px solid #f23518;
+        background-color: #f28b7b;
       }
     }
   }
 }
 
 .footer {
-  background-color: color($monokai-black lightness(-5%));
-  box-shadow: 0px -10px 15px 0px color($monokai-black lightness(-12%));
   margin-top: 5px;
+  background-color: color($monokai-black lightness(-5%));
+  box-shadow: 0 -10px 15px 0 color($monokai-black lightness(-12%));
   z-index: 1;
-
   color: $monokai-blue;
 }
