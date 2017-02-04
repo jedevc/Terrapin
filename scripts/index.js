@@ -13,17 +13,18 @@ window.randomColor = function (saturation = 70, lightness = 60) {
 
 window.turtle = null
 
-let currentLesson = 0
-
 window.onload = () => {
+  // Setup editor
   let editor = new CodeEditor('codeEditor', 'errorView')
   editor.onupdate(() => {
     window.turtle.reset()
   })
 
-  document.getElementById('lessonName').innerHTML = lessons[currentLesson].name
-  editor.contents = lessons[currentLesson].code
+  // Setup lesson navigation
+  document.getElementById('lessonName').innerHTML = lessons[0].name
+  editor.contents = lessons[0].code
 
+  let currentLesson = 0
   document.getElementById('lessonChangeButton').addEventListener('click', () => {
     currentLesson++
     if (currentLesson < lessons.length) {
@@ -32,6 +33,7 @@ window.onload = () => {
     }
   })
 
+  // Setup turtle
   let canvas = document.getElementById('canvasView')
   canvas.addEventListener('click', () => {
     editor.update()
