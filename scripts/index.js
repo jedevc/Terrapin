@@ -5,31 +5,56 @@ import 'codemirror/theme/monokai.css'
 
 import Turtle from './turtle'
 
-function randomNumber(lower, upper) {
+window.randomNumber = function(lower, upper) {
   return lower + Math.floor(Math.random() * (upper - lower))
 }
 
-function randomColor(saturation = 70, lightness = 60) {
+window.randomColor = function(saturation = 70, lightness = 60) {
   return `hsl(${randomNumber(0, 360)}, ${saturation}%, ${lightness}%)`
 }
 
+window.turtle = null
+
+let sample = `
+turtle.background('black')
+turtle.penSize(5)
+for (let i = 0; i < 60; i++) {
+  turtle.color(randomColor())
+  turtle.forward(i)
+  turtle.turn(20)
+}`.trim()
+
 window.onload = () => {
-  CodeMirror.fromTextArea(document.getElementById('code'), {
-    lineNumbers: true,
+  let exec = () => {
+    turtle.reset()
+    let code = editor.getValue()
+    window.eval(code)
+  }
+
+  let editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
     mode: 'javascript',
-    lineWrapping: true,
     theme: 'monokai',
+    lineNumbers: true,
+    lineWrapping: true,
     scrollbarStyle: null
   })
+  editor.setValue(sample)
 
-  let c = document.getElementById('turtle')
-  let turtle = new Turtle(c)
+  let timeout = null
+  editor.on('change', (() => {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => {
+      exec()
+    }, 200)
+  }))
 
-  turtle.background('black')
-  turtle.penSize(5)
-  for (let i = 0; i < 60; i++) {
-    turtle.color(randomColor())
-    turtle.forward(i)
-    turtle.turn(20)
-  }
+  let canvas = document.getElementById('canvas')
+  canvas.addEventListener('click', () => {
+    exec()
+  })
+
+  let ctx = canvas.getContext('2d')
+  turtle = new Turtle(canvas, ctx)
+
+  exec()
 }

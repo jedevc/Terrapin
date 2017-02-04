@@ -60,7 +60,9 @@ body {
 
   & canvas {
     align-self: flex-start;
-    flex: 0 0 content;
+
+    background-color: #FFFFFF;
+    border: 2px $monokai-black-highlight solid;
   }
 }
 

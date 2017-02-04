@@ -3,20 +3,28 @@ function toRadians(degrees) {
 }
 
 export default class Turtle {
-  constructor(canvas) {
+  constructor(canvas, ctx) {
     this.canvas = canvas
-    this.ctx = canvas.getContext('2d')
+    this.ctx = ctx
 
     this.width = canvas.width
     this.height = canvas.height
 
     this.x = 0
     this.y = 0
-    this.center()
-
     this.angle = -90
-
     this.penIsDown = true
+
+    this.reset(false)
+  }
+
+  reset(clear = true) {
+    this.center()
+    this.angle = -90
+    this.penIsDown = true
+    if (clear) {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+    }
   }
 
   _goto(x, y) {
@@ -46,6 +54,12 @@ export default class Turtle {
     this.y = y
   }
 
+  center() {
+    this.x = this.canvas.width / 2
+    this.y = this.canvas.height / 2
+    this.ctx.moveTo(this.x, this.y)
+  }
+
   _forward(amount) {
     let dx = amount * Math.cos(toRadians(this.angle))
     let dy = amount * Math.sin(toRadians(this.angle))
@@ -64,12 +78,6 @@ export default class Turtle {
 
   backward(amount) {
     this.forward(-amount)
-  }
-
-  center() {
-    this.x = this.canvas.width / 2
-    this.y = this.canvas.height / 2
-    this.ctx.moveTo(this.x, this.y)
   }
 
   triangle(size, fill = false) {
