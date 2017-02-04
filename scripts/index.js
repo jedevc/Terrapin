@@ -1,3 +1,8 @@
+import CodeMirror from 'codemirror'
+import 'codemirror/lib/codemirror.css'
+import 'codemirror/mode/javascript/javascript'
+import 'codemirror/theme/monokai.css'
+
 import Turtle from './turtle'
 
 function randomNumber(lower, upper) {
@@ -9,6 +14,14 @@ function randomColor(saturation = 70, lightness = 60) {
 }
 
 window.onload = () => {
+  CodeMirror.fromTextArea(document.getElementById('code'), {
+    lineNumbers: true,
+    mode: 'javascript',
+    lineWrapping: true,
+    theme: 'monokai',
+    scrollbarStyle: null
+  })
+
   let c = document.getElementById('turtle')
   let turtle = new Turtle(c)
 
