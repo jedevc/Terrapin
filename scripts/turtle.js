@@ -7,9 +7,6 @@ export default class Turtle {
     this.canvas = canvas
     this.ctx = ctx
 
-    this.width = canvas.width
-    this.height = canvas.height
-
     this.x = 0
     this.y = 0
     this.angle = -90
@@ -126,7 +123,7 @@ export default class Turtle {
   background (color) {
     let old = this.ctx.fillStyle
     this.ctx.fillStyle = color
-    this.ctx.fillRect(0, 0, this.width, this.height)
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
     this.ctx.fillStyle = old
   }
 

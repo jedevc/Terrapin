@@ -39,6 +39,17 @@ window.onload = () => {
     editor.update()
   })
 
+  let resize = () => {
+    let size = window.getComputedStyle(canvas).height
+    size = parseInt(size)
+    canvas.width = size
+    canvas.height = size
+
+    editor.update()
+  }
+  setTimeout(resize, 0)
+  window.addEventListener('resize', resize)
+
   let ctx = canvas.getContext('2d')
   window.turtle = new Turtle(canvas, ctx)
 }

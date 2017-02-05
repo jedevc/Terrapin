@@ -1,3 +1,5 @@
+@import "normalize.css";
+
 $monokai-black: #272822;
 $monokai-black-highlight: #49483e;
 $monokai-red: #f92672;
@@ -51,8 +53,8 @@ body {
 }
 
 .main {
-  height: 100%;
   flex: 1 1 auto;
+  min-height: 0;
   display: flex;
   flex-direction: row;
 
@@ -76,15 +78,16 @@ body {
     flex-direction: column;
 
     & #canvasView {
-      align-self: flex-start;
+      flex: 1 1 auto;
+      min-height: 0;
       border: 2px $monokai-black-highlight solid;
       background-color: #fff;
     }
 
     & #errorView {
-      flex: 1 1 auto;
-      padding: 1em;
+      flex: 0 0 auto;
       margin-bottom: 0;
+      padding: 1em;
 
       &.success {
         border: 2px solid #55bc14;
