@@ -1,6 +1,7 @@
 import CodeMirror from 'codemirror'
-import 'codemirror/lib/codemirror.css'
 import 'codemirror/mode/javascript/javascript'
+import 'codemirror/keymap/sublime'
+import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/monokai.css'
 
 export default class CodeEditor {
@@ -11,6 +12,7 @@ export default class CodeEditor {
     this.internal = CodeMirror.fromTextArea(document.getElementById(textarea), {
       mode: 'javascript',
       theme: 'monokai',
+      keyMap: 'sublime',
       lineNumbers: true,
       lineWrapping: true,
       scrollbarStyle: null
