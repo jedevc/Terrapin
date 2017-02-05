@@ -3,11 +3,7 @@ const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
-  entry: [
-    './pages/index.html',
-    './scripts/index.js',
-    './stylesheets/index.css'
-  ],
+  entry: './bundle.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -39,7 +35,7 @@ module.exports = {
         ])
       },
       {
-        test: /\.html$/,
+        test: /\.(html|ico)$/,
         use: {
           loader: 'file-loader',
           options: {

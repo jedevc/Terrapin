@@ -2,7 +2,7 @@ export default [
   {
     name: 'The road ahead',
     code: `
-// Welcome to turtle!
+// Welcome to terrapin!
 // We're going to learn some basic javascript by programming a turtle in the
 // canvas on the right hand side.
 
