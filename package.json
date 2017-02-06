@@ -3,8 +3,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack",
-    "test": "standard --verbose && stylelint --config stylelint-config-standard stylesheets/**/*.css"
+    "test": "standard --verbose && stylelint --config stylelint-config-standard stylesheets/**/*.css",
+    "build": "webpack -p",
+    "deploy": "gh-pages -d dist"
   },
   "author": "Justin Chadwell",
   "license": "MIT",
