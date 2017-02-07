@@ -70,8 +70,9 @@ for (var i = 0; i < 4; i++) {
 // So, hopefully you have a better understanding of programming than you did
 // before. I'm happy to have helped you out!
 
-// If you're interested in learning more javascript, then you should check out
-// JS_TUTORIAL_LINK.
+// If you're interested in learning more javascript, then you can check out all
+// sorts of tutorials online for free. They're not too hard too find, just
+// search around a bit and find something you like.
 
 // For now, though, feel free to play around below and make whatever you want!
 
