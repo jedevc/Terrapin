@@ -19,6 +19,10 @@ export default class Turtle {
     this.center()
     this.angle = -90
     this.penIsDown = true
+
+    this.ctx.fillStyle = this.ctx.strokeStyle = 'black'
+    this.ctx.lineWidth = 1
+
     if (clear) {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
     }

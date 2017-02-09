@@ -10,7 +10,7 @@ export default class Router {
     this.callbacks = []
     window.addEventListener('hashchange', () => {
       if (this.update()) {
-        this.callbacks.forEach(callback => {callback(this.content)})
+        this.callbacks.forEach(callback => { callback(this.content) })
       }
     })
   }
@@ -22,7 +22,7 @@ export default class Router {
   }
 
   get nextLink () {
-    if (this.current == this.choices.length) {
+    if (this.current === this.choices.length) {
       return `#${this.prefix}${this.current}`
     } else {
       return `#${this.prefix}${this.current + 1}`
