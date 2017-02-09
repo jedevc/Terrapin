@@ -1,6 +1,7 @@
 import Turtle from './turtle'
 
 import CodeEditor from './editor'
+import Router from './router'
 import lessons from './lessons'
 
 window.randomNumber = function (lower, upper) {
@@ -21,17 +22,12 @@ window.onload = () => {
   })
 
   // Setup lesson navigation
-  document.getElementById('lessonName').innerHTML = lessons[0].name
-  editor.contents = lessons[0].code
-
-  let currentLesson = 0
-  document.getElementById('lessonChangeButton').addEventListener('click', () => {
-    currentLesson++
-    if (currentLesson < lessons.length) {
-      document.getElementById('lessonName').innerHTML = lessons[currentLesson].name
-      editor.contents = lessons[currentLesson].code
-    }
-  })
+  let router = new Router('lesson', lessons)
+  router.onupdate((content) => {
+    document.getElementById('lessonName').innerHTML = content.name
+    editor.contents = content.code
+    document.getElementById('lessonLink').href = router.nextLink
+  }, true)
 
   // Setup turtle
   let canvas = document.getElementById('canvasView')

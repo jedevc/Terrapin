@@ -45,9 +45,16 @@ body {
     text-align: right;
     color: $monokai-green;
 
-    a:hover {
+    & a {
       text-decoration: underline;
-      cursor: pointer;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:visited {
+        color: $monokai-green;
+      }
     }
   }
 }
