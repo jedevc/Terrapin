@@ -43,18 +43,13 @@ body {
   & .lesson {
     flex: 1 1 auto;
     text-align: right;
-    color: $monokai-green;
 
-    & a {
-      text-decoration: underline;
+    & * {
+      color: $monokai-green;
+    }
 
-      &:hover {
-        cursor: pointer;
-      }
-
-      &:visited {
-        color: $monokai-green;
-      }
+    & a:hover {
+      cursor: pointer;
     }
   }
 }
