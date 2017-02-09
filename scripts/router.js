@@ -2,7 +2,7 @@ export default class Router {
   constructor (prefix, arr) {
     this.prefix = prefix
 
-    this.choice = arr
+    this.choices = arr
 
     this.current = 1
     this.update()
@@ -16,13 +16,17 @@ export default class Router {
   }
 
   get content () {
-    if (this.current <= this.choice.length) {
-      return this.choice[this.current - 1]
+    if (this.current <= this.choices.length) {
+      return this.choices[this.current - 1]
     }
   }
 
   get nextLink () {
-    return `#${this.prefix}${this.current + 1}`
+    if (this.current == this.choices.length) {
+      return `#${this.prefix}${this.current}`
+    } else {
+      return `#${this.prefix}${this.current + 1}`
+    }
   }
 
   goto (location) {
@@ -34,7 +38,7 @@ export default class Router {
       let match = window.location.hash.match(`#${this.prefix}(\\d+)`)
       if (match) {
         let next = parseInt(match[1])
-        if (next >= 1 && next <= this.choice.length) {
+        if (next >= 1 && next <= this.choices.length) {
           this.current = next
           return true
         }
