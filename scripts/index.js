@@ -23,7 +23,10 @@ window.onload = () => {
 
   // Setup lesson navigation
   let router = new Router('lesson', lessons)
+
+  let originalTitle = document.title
   router.onupdate((content) => {
+    document.title = `${originalTitle} - lesson ${router.current}`
     document.getElementById('lessonName').innerHTML = content.name
     editor.contents = content.code
     document.getElementById('lessonLink').href = router.nextLink
