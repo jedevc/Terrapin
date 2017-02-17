@@ -4,6 +4,16 @@ import 'codemirror/keymap/sublime'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/monokai.css'
 
+import {TrapProccessor} from './preprocessor'
+
+const LOOP_COUNTER = 'window.LOOP_COUNTER'
+const LOOP_MAX = 10000
+
+let tproc = new TrapProccessor({
+  for: `if(${LOOP_COUNTER}>${LOOP_MAX}){throw new Error("Possible infinite loop detected");}else{${LOOP_COUNTER}++}`,
+  while: `if(${LOOP_COUNTER}>${LOOP_MAX}){throw new Error("Possible infinite loop detected");}else{${LOOP_COUNTER}++}`
+})
+
 export default class CodeEditor {
   constructor (textarea, error, delay = 200) {
     this.callbacks = []
@@ -41,6 +51,8 @@ export default class CodeEditor {
     this.callbacks.forEach(c => c.call())
 
     let code = this.internal.getValue()
+    code = tproc.evaluate(code)
+    code = 'window.LOOP_COUNTER = 0\n' + code
 
     let err = null
     try {
