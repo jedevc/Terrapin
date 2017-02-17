@@ -22,7 +22,7 @@ window.onload = () => {
   })
 
   // Setup lesson navigation
-  let router = new Router('lesson', lessons)
+  let router = new Router('lesson', lessons, {name: 'Not Found', code: '// Lesson not found'})
 
   let originalTitle = document.title
   router.onupdate((content) => {

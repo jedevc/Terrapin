@@ -1,8 +1,9 @@
 export default class Router {
-  constructor (prefix, arr) {
+  constructor (prefix, choices, error=null) {
     this.prefix = prefix
 
-    this.choices = arr
+    this.choices = choices
+    this.error = error
 
     this.current = 1
     this.update()
@@ -16,14 +17,16 @@ export default class Router {
   }
 
   get content () {
-    if (this.current <= this.choices.length) {
+    if (this.current >= 1 && this.current <= this.choices.length) {
       return this.choices[this.current - 1]
+    } else {
+      return this.error
     }
   }
 
   get nextLink () {
-    if (this.current === this.choices.length) {
-      return `#${this.prefix}${this.current}`
+    if (this.current >= this.choices.length) {
+      return `#${this.prefix}${this.choices.length}`
     } else {
       return `#${this.prefix}${this.current + 1}`
     }
@@ -37,11 +40,8 @@ export default class Router {
     if (window.location.hash.length > 0) {
       let match = window.location.hash.match(`#${this.prefix}(\\d+)`)
       if (match) {
-        let next = parseInt(match[1])
-        if (next >= 1 && next <= this.choices.length) {
-          this.current = next
-          return true
-        }
+        this.current = parseInt(match[1])
+        return true
       }
       return false
     } else {
