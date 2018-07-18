@@ -1,5 +1,5 @@
 export default class Router {
-  constructor (prefix, choices, error=null) {
+  constructor (prefix, choices, error = null) {
     this.prefix = prefix
 
     this.choices = choices

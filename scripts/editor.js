@@ -56,7 +56,7 @@ export default class CodeEditor {
 
     let err = null
     try {
-      window.eval(code)  // eslint-disable-line no-eval
+      window.eval(code) // eslint-disable-line no-eval
     } catch (e) {
       err = e
     } finally {
