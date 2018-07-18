@@ -2,7 +2,7 @@ import Turtle from './turtle'
 
 import CodeEditor from './editor'
 import Router from './router'
-import lessons from './lessons'
+import pages from './pages'
 
 window.randomNumber = function (lower, upper) {
   return lower + Math.floor(Math.random() * (upper - lower))
@@ -21,15 +21,12 @@ window.onload = () => {
     window.turtle.reset()
   })
 
-  // setup lesson navigation
-  let router = new Router('lesson', lessons, {name: 'Not Found', code: '// Lesson not found'})
-
-  let originalTitle = document.title
+  // setup page navigation
+  let router = new Router('page', pages, {name: 'Not Found', code: '// Page not found'})
   router.onupdate((content) => {
-    document.title = `${originalTitle} - lesson ${router.current}`
-    document.getElementById('lessonName').innerHTML = content.name
+    document.getElementById('pageName').innerHTML = content.name
     editor.contents = content.code
-    document.getElementById('lessonLink').href = router.nextLink
+    document.getElementById('pageLink').href = router.nextLink
   })
 
   // setup turtle
