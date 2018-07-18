@@ -9,3 +9,7 @@ functionality, so I've created a simple to use program allowing anyone to make
 turtle patterns directly in their browser.
 
 Have a go right [here](https://jedevc.github.io/terrapin/)!
+
+## License
+
+Terrapin is licensed under the MIT license. Enjoy!
