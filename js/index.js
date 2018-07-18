@@ -15,13 +15,13 @@ window.randomColor = function (saturation = 70, lightness = 60) {
 window.turtle = null
 
 window.onload = () => {
-  // Setup editor
+  // setup editor
   let editor = new CodeEditor('codeEditor', 'errorView')
   editor.onupdate(() => {
     window.turtle.reset()
   })
 
-  // Setup lesson navigation
+  // setup lesson navigation
   let router = new Router('lesson', lessons, {name: 'Not Found', code: '// Lesson not found'})
 
   let originalTitle = document.title
@@ -32,7 +32,7 @@ window.onload = () => {
     document.getElementById('lessonLink').href = router.nextLink
   }, true)
 
-  // Setup turtle
+  // setup turtle
   let canvas = document.getElementById('canvasView')
   canvas.addEventListener('click', () => {
     editor.update()
