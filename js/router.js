@@ -50,10 +50,8 @@ export default class Router {
     }
   }
 
-  onupdate (callback, fire = false) {
+  onupdate (callback) {
     this.callbacks.push(callback)
-    if (fire) {
-      callback(this.content)
-    }
+    callback(this.content)
   }
 }

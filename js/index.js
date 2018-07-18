@@ -30,7 +30,7 @@ window.onload = () => {
     document.getElementById('lessonName').innerHTML = content.name
     editor.contents = content.code
     document.getElementById('lessonLink').href = router.nextLink
-  }, true)
+  })
 
   // setup turtle
   let canvas = document.getElementById('canvasView')
