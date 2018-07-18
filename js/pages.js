@@ -28,7 +28,7 @@ turtle.forward(100)     // Move forward 100 pixels
 turtle.turn(45)         // Turn 45 degrees (to the right)
 turtle.backward(50)     // Move backward 50 pixels
 turtle.penSize(5)       // Set the pen size to 5
-turtle.penColor('red')  // Set the pen color to red
+turtle.color('red')     // Set the color to red
 turtle.circle(75)       // Draw a circle with radius 75
 turtle.triangle(10)     // Draw a triangle at the location of the turtle
 
@@ -40,10 +40,10 @@ turtle.forward(100)  // Move forward 100 pixels
 turtle.penDown()     // Put the pen down again
 
 // Draw a concentric circle
-turtle.fillColor('blue')  // Set the fill color to blue
-turtle.circle(20, true)   // Draw a filled circle with radius 20
-turtle.fillColor('red')   // Set the fill color to red
-turtle.circle(10, true)   // Draw a filled circle with radius 10
+turtle.color('blue')     // Set the color to blue
+turtle.circle(20, true)  // Draw a filled circle with radius 20
+turtle.color('red')      // Set the color to red
+turtle.circle(10, true)  // Draw a filled circle with radius 10
 `.trimLeft()
   },
   {
@@ -81,7 +81,7 @@ for (var i = 10; i < 160; i += 10) {
   turtle.penUp()
   turtle.goto(turtle.x - 12, turtle.y + 5)
   turtle.penDown()
-  turtle.penColor(randomColor())
+  turtle.color(randomColor())
   for (var j = 0; j < 8; j++) {
     turtle.forward(i)
     turtle.turn(45)

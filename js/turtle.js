@@ -147,14 +147,6 @@ export default class Turtle {
     this.ctx.lineWidth = size
   }
 
-  penColor (color) {
-    this.ctx.strokeStyle = color
-  }
-
-  fillColor (color) {
-    this.ctx.fillStyle = color
-  }
-
   color (color) {
     this.ctx.strokeStyle = color
     this.ctx.fillStyle = color
