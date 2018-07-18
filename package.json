@@ -2,10 +2,9 @@
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --mode development",
     "test": "standard --verbose && stylelint --config stylelint-config-standard stylesheets/**/*.css",
-    "build": "webpack -p",
-    "deploy": "gh-pages -d dist"
+    "build": "webpack --mode production"
   },
   "author": "Justin Chadwell",
   "license": "MIT",
