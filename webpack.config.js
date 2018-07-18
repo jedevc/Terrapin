@@ -1,6 +1,7 @@
 const path = require('path')
 
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   entry: './bundle.js',
@@ -34,19 +35,14 @@ module.exports = {
             }
           }
         ]
-      },
-      {
-        test: /\.(html|ico)$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]'
-          }
-        }
       }
     ]
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      favicon: 'static/favicon.ico'
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].css'
     })
