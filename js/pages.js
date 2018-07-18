@@ -1,102 +1,62 @@
 export default [
   {
-    name: 'The road ahead',
+    name: 'Introduction',
     code: `
 // Welcome to terrapin!
-//
-// What is terrapin, you might ask?
-// Well, it's a entry-level tutorial to learn programming that I built out of
-// frustration with existing tutorials. One of the best ways to learn is
-// through actually doing and seeing the results of that as quickly as possible
-// and that's what I've tried to make here.
-//
-// In this tutorial, we're going to be learning some basic javascript by
-// programming a turtle to move and draw things. By the end, we'll have learnt
-// loops, conditionals, functions, plus some basic problem solving skills which
-// get skipped over sometimes. Don't worry if you don't know what any of that
-// means - we'll get to it soon enough.
-//
-// You should definitely play around with the code in this editor. You can
-// change it to say anything you like. It's through reading and editing the
-// code that you'll learn better.
-//
+
+// Terrapin is a simple programming environment in which you can control a
+// programmable turtle and draw lines with it. This kind of functionality
+// can be found in many languages, including python, however, javascript does
+// not and so I decided to make one.
+
+// All of the code in here can be edited and run. As soon as you make changes,
+// you should see those changes instantly reflected in the canvas on the right.
+
 // When you're ready to start, click the next button in the top right corner
 // to get going.
-`.trimLeft()
-  },
-  {
-    name: 'First steps',
-    code: `
-// This bit makes the turtle go forward and draw a line behind it.
-// Try changing the number to something else.
-turtle.forward(100)
-
-// And this bit draws the turtle.
-// Try adding '//' at the beginning of the line to make it into a comment (which
-// means that the computer will ignore it).
-turtle.triangle(10)
-// Poof! Turtle gone.
-
-// When you feel like you're done, click the next button again.
-`.trimLeft()
-  },
-  {
-    name: 'Turning the tide',
-    code: `
-// turtle.turn(angle) lets you rotate the turtle around. It uses degrees, so
-// you can use any value between 0 and 360. The default is to turn right, but
-// you can use a negative number instead to turn left.
-
-// To get an idea of how it works, change the number below and see how the
-// turtle rotates.
-turtle.turn(45)
-
-// Now that you've got that, try and change the code below to make the turtle
-// draw a square. Remember that you can modify existing lines as well as adding
-// new ones.
-turtle.forward(100)
-turtle.turn(90)
-turtle.forward(100)
 
 turtle.triangle(10)
-
-// When you've finished drawing the square, move onto the next lesson.
 `.trimLeft()
   },
   {
-    name: 'Getting loopy',
+    name: 'Functionality',
     code: `
-// Let's see the square example again.
-// If you solved the last problem, you probably got something that looked a bit
-// like this:
-//   turtle.forward(100)
-//   turtle.turn(90)
-//   turtle.forward(100)
-//   turtle.turn(90)
-//   turtle.forward(100)
-//   turtle.turn(90)
-//   turtle.forward(100)
-// However, there are some problems with this.
-// You can see that there are A LOT of repetitions of the same two lines.
-// Wouldn't it be nice if there was some way to repeat them without typing them
-// out over and over?
-//   turtle.forward(100) <---|
-//                           | After turning, go forward again.
-//   turtle.turn(90) >-------|
-// We can do exactly this with a javascript for loop. Let's have a look - again,
-// you don't need to fully understand eveything, we'll come back and look at
-// it later.
+// The following should demonstrate all of the features of terrapin.
 
-// Repeat 4 times
-for (var i = 0; i < 4; i++) {
-  // Draw one side of the square
-  turtle.forward(100)
-  turtle.turn(90)
+// Draw a collection of random shapes
+turtle.forward(100)     // Move forward 100 pixels
+turtle.turn(45)         // Turn 45 degrees (to the right)
+turtle.backward(50)     // Move backward 50 pixels
+turtle.penSize(5)       // Set the pen size to 5
+turtle.penColor('red')  // Set the pen color to red
+turtle.circle(75)       // Draw a circle with radius 75
+turtle.triangle(10)     // Draw a triangle at the location of the turtle
+
+// Move to another position without leaving a line
+turtle.penUp()       // Raise the pen
+turtle.center()      // Move to the center of the canvas
+turtle.face(90)      // Turn to face down
+turtle.forward(100)  // Move forward 100 pixels
+turtle.penDown()     // Put the pen down again
+
+// Draw a concentric circle
+turtle.fillColor('blue')  // Set the fill color to blue
+turtle.circle(20, true)   // Draw a filled circle with radius 20
+turtle.fillColor('red')   // Set the fill color to red
+turtle.circle(10, true)   // Draw a filled circle with radius 10
+`.trimLeft()
+  },
+  {
+    name: 'Circles',
+    code: `
+// The following code uses randomColor() to generate a set of circles.
+
+for (let i = 200; i > 0; i -= 10) {
+  turtle.color(randomColor())
+  turtle.circle(i, true)
 }
 
-// Your task is to modify the above example to draw a hexagon instead of a
-// square. Remember that a hexagon has 6 sides instead of 4 and it's external
-// angle is 60 instead of 90. When you're done, click the next button.
+// Try clicking on the canvas to generate a new set.
 `.trimLeft()
   },
   {
@@ -106,18 +66,13 @@ for (var i = 0; i < 4; i++) {
 `.trimLeft()
   },
   {
-    name: 'That\'s all folks!',
+    name: 'The End',
     code: `
-// That's all of the lessons done!
-// So, hopefully you have a better understanding of programming than you did
-// before. I'm happy to have helped you out!
+// Thanks for looking through my collection of random squiggles!
 
-// There were quite a few things that this tutorial glossed over a bit, sorry
-// about that. However, if you're interested in learning more javascript, then
-// you can check out all sorts of tutorials online for free. They're not too
-// hard too find, just search around a bit and find something you like.
-
-// For now, though, feel free to play around below and make whatever you want!
+// Hopefully you had some fun along the way, and played with some of the
+// numbers and code to make some cool things yourself. If not, why not do that
+// here? No rush :)
 
 turtle.background('black')
 turtle.penSize(3)
